@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Music Player UI</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0f2027, #75c2dc, #2c5364);
+        font-family: "Segoe UI", sans-serif;
+        color: #fff;
+    }
+
+    .player {
+        width: 320px;
+        background: #121212;
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .cover {
+        width: 100%;
+        height: 180px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #b77c71, #dd2476);
+        margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cover::after {
+        content: "🎧";
+        font-size: 70px;
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.3;
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .artist {
+        font-size: 13px;
+        color: #aaa;
+        margin-bottom: 15px;
+    }
+
+    /* Progress bar */
+    .progress {
+        width: 100%;
+        height: 6px;
+        background: #333;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+
+    .progress span {
+        display: block;
+        height: 100%;
+        width: 35%;
+        background: linear-gradient(90deg, #1db954, #1ed760);
+        transition: width 0.4s;
+    }
+
+    .progress:hover span {
+        width: 65%;
+    }
+
+    .time {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: #888;
+        margin-bottom: 15px;
+    }
+
+    /* Controls */
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #1f1f1f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.2s;
+        font-size: 18px;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+        background: #1db954;
+    }
+
+    /* Play / Pause Toggle */
+    #play-toggle {
+        display: none;
+    }
+
+    .play {
+        font-size: 22px;
+    }
+
+    #play-toggle:checked + label::before {
+        content: "⏸";
+    }
+
+    label::before {
+        content: "▶";
+    }
+
+    /* Volume */
+    .volume {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .volume input {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 4px;
+        background: #333;
+        border-radius: 10px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .volume input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #1db954;
+    }
+</style>
+</head>
+<body>
+
+<div class="player">
+    <div class="cover"></div>
+
+    <div class="title">Rising up</div>
+    <div class="artist">billy</div>
+
+    <div class="progress">
+        <span></span>
+    </div>
+
+    <div class="time">
+        <span>1:24</span>
+        <span>3:45</span>
+    </div>
+
+    <div class="controls">
+        <div class="btn">⏮</div>
+
+        <input type="checkbox" id="play-toggle">
+        <label for="play-toggle" class="btn play"></label>
+
+        <div class="btn">⏭</div>
+    </div>
+
+    <div class="volume">
+        🔊
+        <input type="range" min="0" max="100" value="70">
+    </div>
+</div>
+
+</body>
+</html>
